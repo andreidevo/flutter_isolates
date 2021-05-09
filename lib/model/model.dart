@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'dart:math';
+import 'dart:isolate';
 
 
 
@@ -22,13 +23,21 @@ Future<String> jsonParse (Param param) async {
 class Param {
   String href;
   BuildContext context;
+  SendPort sendPort;
 
   Param(this.href, this.context);
+
 }
 
 class Model{
 
-  //StreamBuilder<>
+
+  Model({
+    @required String s,
+    @required String s1
+  });
+
+
   Future<http.Response> getQR() async {
 
     Response request = await http.post(Uri.parse(""), body: {
